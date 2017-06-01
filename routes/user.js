@@ -1,14 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var utils = require(`../utils.js`);
+var bodyParser = require('body-parser');
 
+router.use(bodyParser.urlencoded({extended: false}))
+router.use(bodyParser.json())
 router.post('/regist',(req,res)=>{
   console.log("회원가입");
   var login_id = req.body.login_id;
   var login_pw = req.body.login_pw;
   var user_name = req.body.user_name;
-
-  if(login_id == "undefined" || login_pw == "undefined" || user_name =="undefined"){
+console.log("gigigi");  
+ console.log(login_id);
+  if(login_id === "undefined" || login_pw === "undefined" || user_name ==="undefined"){
     res.json({
       meta: {
                 code: -11,
